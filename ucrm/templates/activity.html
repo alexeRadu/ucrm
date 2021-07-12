@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	<h1>{% block title %}Activity{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="activity">Activity</label>
+    <select name="activity" id="activity" required>
+			{% for type in g.activity_types %}
+				<option value="{{ type }}">{{ type }}</option>
+			{% endfor %}
+		</select>
+
+    <label for="hours">Hours</label>
+    <input type="number" name="hours" id="hours" required>
+
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
+
