@@ -1,0 +1,3 @@
+- add date to each activity
+- use chart.js to create first draft of the page to be presented
+- create view for dashboard
