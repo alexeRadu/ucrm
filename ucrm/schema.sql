@@ -17,7 +17,8 @@ CREATE TABLE activity (
 	id		INTEGER PRIMARY KEY AUTOINCREMENT,
 	userid		INTEGER NOT NULL,
 	activityid	INTEGER NOT NULL,
-	hours		INTEGER NOT NULL
+	time		INTEGER NOT NULL,
+	details		TEXT
 );
 
 INSERT INTO user(username, password) VALUES("radu", "1234");
