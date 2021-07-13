@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, g, request
+from flask import Flask, render_template, g, request, session, url_for, redirect
 from ucrm.db import get_db
 
 def create_app(test_config=None):
@@ -30,6 +30,11 @@ def create_app(test_config=None):
 
     @app.route("/activity", methods = ('GET', 'POST'))
     def activity():
+        user_id = session.get('user_id')
+
+        if user_id is None:
+            return redirect(url_for('auth.login'))
+
         db = get_db()
         error = None
 
