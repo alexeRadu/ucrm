@@ -28,39 +28,14 @@ def create_app(test_config=None):
     def hello():
         return "Hello, World!"
 
-    @app.route("/activity", methods = ('GET', 'POST'))
-    def activity():
-        user_id = session.get('user_id')
-
-        if user_id is None:
-            return redirect(url_for('auth.login'))
-
-        db = get_db()
-        error = None
-
-        activity_types = [row['name'] for row in db.execute('SELECT name FROM activity_type').fetchall()]
-        g.activity_types = activity_types
-
-        if request.method == 'POST':
-            activity = request.form['activity']
-            time = request.form['time']
-            details = request.form['details']
-            user_id = 1
-
-            activity_id = db.execute('SELECT id FROM activity_type WHERE name = ?', (activity,)).fetchone()['id']
-
-            if activity_id is None:
-                error = f'No activity {activity} found'
-            else:
-                db.execute('INSERT INTO activity (userid, activityid, time, details) VALUES (?, ?, ?, ?)', (user_id, activity_id, time, details))
-                db.commit()
-
-        return render_template('activity.html')
-
     from . import db
     db.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import activity
+    app.register_blueprint(activity.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
