@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from ucrm.db import get_db
 from ucrm.auth import login_required
+from datetime import date
 
 bp = Blueprint('activity', __name__)
 
@@ -20,8 +21,9 @@ def activity():
 
     if request.method == 'POST':
         activity = request.form['activity']
-        time = request.form['time']
+        duration = request.form['duration']
         details = request.form['details']
+        time = date.today().strftime("%d-%m-%y")
         user_id = 1
 
         activity_id = db.execute('SELECT id FROM activity_type WHERE name = ?', (activity,)).fetchone()['id']
@@ -29,7 +31,7 @@ def activity():
         if activity_id is None:
             error = f'No activity {activity} found'
         else:
-            db.execute('INSERT INTO activity (userid, activityid, time, details) VALUES (?, ?, ?, ?)', (user_id, activity_id, time, details))
+            db.execute('INSERT INTO activity (userid, activityid, time, duration, details) VALUES (?, ?, ?, ?, ?)', (user_id, activity_id, time, duration, details))
             db.commit()
 
     return render_template('activity.html')

@@ -17,7 +17,8 @@ CREATE TABLE activity (
 	id		INTEGER PRIMARY KEY AUTOINCREMENT,
 	userid		INTEGER NOT NULL,
 	activityid	INTEGER NOT NULL,
-	time		INTEGER NOT NULL,
+	time		TEXT NOT NULL,
+	duration	INTEGER NOT NULL,
 	details		TEXT
 );
 
