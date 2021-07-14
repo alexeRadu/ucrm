@@ -1,5 +1,3 @@
-- use chart.js to create first draft of the page to be presented
-- create view for dashboard
 - test with multiple users
 - make project installable (so that could be used by someone else)
 - create tests
