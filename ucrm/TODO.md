@@ -1,5 +1,3 @@
-- diferentiate between two types of users: admins and normal users
-- re-write navigation and make it based on user type
 - redo the styling (html & css)
 - dashboard to corectly use 'period' - use time correctly
 - make project installable (so that could be used by someone else)
