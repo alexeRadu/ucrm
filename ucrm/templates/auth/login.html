@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
+<form class="login" method="post">
+	<div class="imgcontainer">
+		<img src="{{ url_for('static', filename='login.png') }}">
+	</div>
+
+	<div class="container">
+		<label for="username">Username</label>
+		<input type="text" name="username" placeholder="Enter Username" required>
+
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
+    <input type="password" name="password" placeholder="Enter Password" required>
+
+		<button type="submit">Login</button>
+	</div>
+</form>
 {% endblock %}
