@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS activity;
 CREATE TABLE user (
 	id		INTEGER PRIMARY KEY AUTOINCREMENT,
 	username	TEXT UNIQUE NOT NULL,
-	password	TEXT NOT NULL
+	password	TEXT NOT NULL,
+	accounttype	TEXT NOT NULL
 );
 
 CREATE TABLE activity_type (
@@ -22,7 +23,8 @@ CREATE TABLE activity (
 	details		TEXT
 );
 
-INSERT INTO user(username, password) VALUES("radu", "1234");
+INSERT INTO user(username, password, accounttype) VALUES("George", "1234", "admin");
+INSERT INTO user(username, password, accounttype) VALUES("Anca", "qwer", "normal");
 
 INSERT INTO activity_type(name) VALUES("activity1");
 INSERT INTO activity_type(name) VALUES("activity2");

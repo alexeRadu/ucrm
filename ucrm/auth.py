@@ -50,7 +50,11 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+
+            if user['accounttype'] == 'admin':
+                return redirect(url_for('dashboard.dashboard'))
+            else:
+                return redirect(url_for('index'))
 
         flash(error)
 
@@ -68,7 +72,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = get_db().execute('SELECT * FROM user WHERE id = ?', (user_id,)).fetchone()['username']
+        g.user = get_db().execute('SELECT * FROM user WHERE id = ?', (user_id,)).fetchone()
 
 def login_required(view):
     @functools.wraps(view)

@@ -1,18 +1,35 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - &mu;CRM </title>
+<title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>&mu;CRM</h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% endif %}
-		{% if request.endpoint == 'auth.login' %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-    {% endif %}
-  </ul>
-</nav>
+
+{% if g.user %}
+<nav><ul>
+	<li style="background-color: #111"><a>{{ g.user['username'] }}</a></li>
+
+	{% if g.user['accounttype'] == 'admin' %}
+
+	<li {% if request.endpoint == 'dashboard.dashboard' %} class="active" {% endif %}>
+		<a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a>
+	</li>
+
+	<li {% if request.endpoint == 'auth.register' %} class="active" {% endif %}>
+		<a href="{{ url_for('auth.register') }}">Register</a>
+	</li>
+
+	{% else %}
+
+	<li {% if request.endpoint == 'activity.activity' %} class="active" {% endif %}>
+		<a href="{{ url_for('activity.activity') }}">Activity</a>
+	</li>
+
+	{% endif %}
+
+	<li style="float:right">
+		<a href="{{ url_for('auth.logout') }}">Log Out</a>
+	</li>
+</ul></nav>
+{% endif %}
+
 <section class="content">
   <header>
     {% block header %}{% endblock %}
