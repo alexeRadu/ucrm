@@ -10,6 +10,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        accounttype = request.form['accounttype']
 
         db = get_db()
         error = None
@@ -22,7 +23,8 @@ def register():
             error = f"Username {username} is already registered."
 
         if error is None:
-            db.execute('INSERT INTO user (username, password) VALUES (?, ?)', (username, generate_password_hash(password)))
+            #db.execute('INSERT INTO user (username, password, accounttype) VALUES (?, ?, ?)', (username, generate_password_hash(password), accounttype))
+            db.execute('INSERT INTO user (username, password, accounttype) VALUES (?, ?, ?)', (username, password, accounttype))
             db.commit()
             return redirect(url_for('auth.login'))
 

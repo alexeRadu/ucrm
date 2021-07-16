@@ -1,4 +1,3 @@
-- when register user add type: (admin, normal)
 - dashboard to corectly use 'period' - use time correctly
 - make project installable (so that could be used by someone else)
 - create tests

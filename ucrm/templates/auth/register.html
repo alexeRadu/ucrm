@@ -4,10 +4,16 @@
 <form class="card" method="post">
 	<div class="container">
 		<label for="username">Username</label>
-		<input type="text" name="username" id="username" required>
+		<input type="text" name="username" required>
 
 		<label for="password">Password</label>
-		<input type="password" name="password" id="password" required>
+		<input type="password" name="password" required>
+
+		<label for="accounttype">Account Type</label>
+		<select name="accounttype" required>
+			<option value="admin">Admin</option>
+			<option value="normal">Normal</option>
+		</select>
 
 		<button type="submit">Register</button>
 	</div>
