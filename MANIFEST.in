@@ -1,0 +1,4 @@
+include ucrm/schema.sql
+graft ucrm/static
+graft urcr/templates
+global-exclude *.pyc
