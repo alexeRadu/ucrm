@@ -1,34 +1,34 @@
 {% extends 'base.html' %}
 
-{% block header %}
-	<h1>{% block title %}Dashboard{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-<form method = "post">
-	<label for="user">User</label>
-	<select name="user" required>
-		<option value="All" {% if g.last_user == "All" %}selected{% endif %}>All</option>
-		{% for user in g.users %}
-		<option value="{{ user }}" {% if g.last_user == user %}selected{% endif %}>{{ user }}</option>
-		{% endfor %}
-	</select>
+<form class="card" method = "post">
+	<div class="container">
+		<label for="user">User</label>
+		<select name="user" required>
+			<option value="All" {% if g.last_user == "All" %}selected{% endif %}>All</option>
+			{% for user in g.users %}
+			<option value="{{ user }}" {% if g.last_user == user %}selected{% endif %}>{{ user }}</option>
+			{% endfor %}
+		</select>
 
-	<label for="period">Period</label>
-	<select name="period" required>
-		<option value="day"{% if g.last_period == "day" %}selected{% endif %}>Last Day</option>
-		<option value="week"{% if g.last_period == "week" %}selected{% endif %}>Last Week</option>
-		<option value="month"{% if g.last_period == "month" %}selected{% endif %}>Last Month</option>
-	</select>
+		<label for="period">Period</label>
+		<select name="period" required>
+			<option value="day"{% if g.last_period == "day" %}selected{% endif %}>Last Day</option>
+			<option value="week"{% if g.last_period == "week" %}selected{% endif %}>Last Week</option>
+			<option value="month"{% if g.last_period == "month" %}selected{% endif %}>Last Month</option>
+		</select>
 
-  <input type="submit" value="Submit">
+		<button type="submit">Submit</button>
+	</div>
 </form>
 <hr>
 
 {% if g.stats %}
-<canvas id="myChart" style="width:100%; max-width: 700px"></canvas>
+<div class="canvas-container">
+	<canvas id="myChart" style="width:100%; max-width: 700px"></canvas>
+</div>
 
 <script>
 //var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
