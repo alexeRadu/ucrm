@@ -10,9 +10,6 @@ bp = Blueprint('activity', __name__)
 def activity():
     user_id = session.get('user_id')
 
-    if user_id is None:
-        return redirect(url_for('auth.login'))
-
     db = get_db()
     error = None
 
@@ -24,7 +21,6 @@ def activity():
         duration = request.form['duration']
         details = request.form['details']
         time = date.today().strftime("%d-%m-%y")
-        user_id = 1
 
         activity_id = db.execute('SELECT id FROM activity_type WHERE name = ?', (activity,)).fetchone()['id']
 
