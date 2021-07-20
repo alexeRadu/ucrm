@@ -1,2 +1,1 @@
 - [High]   Activity - input on the horizontal
-- [Normal] Encrypt passwords
