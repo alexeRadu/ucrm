@@ -23,9 +23,9 @@ CREATE TABLE activity (
 	details		TEXT
 );
 
-INSERT INTO user(username, password, accounttype) VALUES("Ensar Duman", "1234", "admin");
-INSERT INTO user(username, password, accounttype) VALUES("George", "1234", "normal");
-INSERT INTO user(username, password, accounttype) VALUES("Anca", "1234", "normal");
+INSERT INTO user(username, password, accounttype) VALUES("Ensar Duman", "pbkdf2:sha256:260000$Z8NLCiW6Yli1KEkd$3ed2523324466577181fb36352a0672c8a2fcb7b916bb73c77b76a80566f393d", "admin");
+INSERT INTO user(username, password, accounttype) VALUES("George", "pbkdf2:sha256:260000$Z8NLCiW6Yli1KEkd$3ed2523324466577181fb36352a0672c8a2fcb7b916bb73c77b76a80566f393d", "normal");
+INSERT INTO user(username, password, accounttype) VALUES("Anca", "pbkdf2:sha256:260000$Z8NLCiW6Yli1KEkd$3ed2523324466577181fb36352a0672c8a2fcb7b916bb73c77b76a80566f393d", "normal");
 
 INSERT INTO activity_type(name) VALUES("Programare Pacienti");
 INSERT INTO activity_type(name) VALUES("Incasare Bani");

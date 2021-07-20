@@ -23,8 +23,7 @@ def register():
             error = f"Username {username} is already registered."
 
         if error is None:
-            #db.execute('INSERT INTO user (username, password, accounttype) VALUES (?, ?, ?)', (username, generate_password_hash(password), accounttype))
-            db.execute('INSERT INTO user (username, password, accounttype) VALUES (?, ?, ?)', (username, password, accounttype))
+            db.execute('INSERT INTO user (username, password, accounttype) VALUES (?, ?, ?)', (username, generate_password_hash(password), accounttype))
             db.commit()
             return redirect(url_for('auth.login'))
 
@@ -45,8 +44,7 @@ def login():
 
         if user is None:
             error = 'Incorrect password.'
-        #elif not check_password_hash(user['password'], password):
-        elif not password == user['password']:
+        elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
 
         if error is None:
