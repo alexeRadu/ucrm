@@ -1,0 +1,12 @@
+- [High]   generate good database input
+- [High]   change the way time is used in queries
+- [Normal] white background
+- [Normal] top bar color according to site
+- [Normal] activities names: programare pacienti, Incasare bani, Organizare documente
+- [Low]    move user name to the right, near the logout
+- [Low]    make font: Arial
+- [Normal] User admin: Enasar Duman
+- [Normal] Pie chart in hours (not minutes)
+- [High]   Pie chart on the right
+- [High]   Activity - input on the horizontal
+- [High]   Activity - table with the last 10-20 inputs
