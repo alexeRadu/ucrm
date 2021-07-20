@@ -1,4 +1,4 @@
-html { font-family: sans-serif; background: #eee; }
+html { font-family: sans-serif; background: white; font-family: Arial, Helvetica, sans-serif; }
 body { margin: 0 auto; }
 
 /* Navigation */
@@ -7,7 +7,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333;
+	background-color: #21766f;
 }
 
 nav li {
@@ -23,11 +23,12 @@ nav li a {
 }
 
 nav li a:hover:not(.active) {
-	background-color: #111;
+	background-color: #073431;
+	opacity: 0.8;
 }
 
 .active {
-	background-color: #04AA6D;
+	background-color: #073431;
 }
 
 /* Card */
@@ -69,7 +70,7 @@ lable {
 }
 
 button {
-	background-color: #04AA6D;
+	background-color: #21766f;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
