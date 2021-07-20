@@ -1,4 +1,3 @@
-- [Normal] Pie chart in hours (not minutes)
 - [High]   Pie chart on the right
 - [High]   Activity - input on the horizontal
 - [High]   Activity - table with the last 10-20 inputs
