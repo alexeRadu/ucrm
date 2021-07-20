@@ -1,4 +1,3 @@
-- [High]   change the way time is used in queries
 - [Normal] Pie chart in hours (not minutes)
 - [High]   Pie chart on the right
 - [High]   Activity - input on the horizontal

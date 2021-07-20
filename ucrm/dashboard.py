@@ -1,7 +1,6 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from ucrm.db import get_db
 from ucrm.auth import login_required
-from datetime import date
 
 bp = Blueprint('dashboard', __name__, url_prefix = '/dashboard')
 
@@ -22,10 +21,21 @@ def dashboard():
         activity_types = {row['id']:row['name'] for row in db.execute('SELECT * FROM activity_type').fetchall()}
 
         if user == "All":
-            activities = db.execute('SELECT activityid, duration FROM activity').fetchall()
+            if period == 'day':
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE time = DATE(\'now\')').fetchall()
+            elif period == 'week':
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE time BETWEEN DATE(\'now\', \'-8 days\') AND DATE(\'now\')').fetchall()
+            else: # 'Last Month'
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE time BETWEEN DATE(\'now\', \'-1 month\') AND DATE(\'now\')').fetchall()
         else:
             userid = db.execute('SELECT * FROM user WHERE username = ?', (user,)).fetchone()["id"]
-            activities = db.execute('SELECT activityid, duration FROM activity WHERE userid = ?', (userid,))
+
+            if period == 'day':
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE userid = ? AND time = DATE(\'now\')', (userid,)).fetchall()
+            elif period == 'week':
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE userid = ? AND time BETWEEN DATE(\'now\', \'-8 days\') AND DATE(\'now\')', (userid,)).fetchall()
+            else: # 'Last Month'
+                activities = db.execute('SELECT activityid, duration FROM activity WHERE userid = ? AND time BETWEEN DATE(\'now\', \'-1 month\') AND DATE(\'now\')', (userid,)).fetchall()
 
         stats = {}
         for k, v in activity_types.items():
