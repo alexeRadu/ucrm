@@ -22,12 +22,9 @@ def dashboard():
         activity_types = {row['id']:row['name'] for row in db.execute('SELECT * FROM activity_type').fetchall()}
 
         if user == "All":
-            print('All---')
             activities = db.execute('SELECT activityid, duration FROM activity').fetchall()
         else:
-            print(f'user: {user}')
             userid = db.execute('SELECT * FROM user WHERE username = ?', (user,)).fetchone()["id"]
-            print(f'userid: {userid}')
             activities = db.execute('SELECT activityid, duration FROM activity WHERE userid = ?', (userid,))
 
         stats = {}
