@@ -3,21 +3,38 @@
 {% block content %}
 <form class="card" method="post">
 	<div class="container">
-		<label for="activity">Activity</label>
+		<label for="activity">Activitate</label>
 		<select name="activity" id="activity" required>
 			{% for type in g.activity_types %}
 				<option value="{{ type }}">{{ type }}</option>
 			{% endfor %}
 		</select>
 
-		<label for="duration">Duration (min)</label>
+		<label for="duration">Durata (min)</label>
 		<input type="number" name="duration" id="duration" required>
 
-		<label for="details">Details</label>
+		<label for="details">Detalii</label>
 		<textarea name="details" id="details" required></textarea>
 
 		<button type="submit">Submit</button>
 	</div>
 </form>
+
+<table class="activity-table">
+	<tr>
+		<th>Activitate</th>
+		<th>Data</th>
+		<th>Durata</th>
+		<th>Detalii</th>
+	</tr>
+	{% for activity in g.activities %}
+		<tr>
+			<td>{{ activity['name'] }}</td>
+			<td>{{ activity['time'] }}</td>
+			<td>{{ activity['duration'] }} min</td>
+			<td>{% if activity['details'] %} {{ activity['details'] }} {% endif %}</td>
+		</tr>
+	{% endfor %}
+</table>
 {% endblock %}
 

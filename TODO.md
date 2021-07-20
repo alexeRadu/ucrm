@@ -1,5 +1,3 @@
-- [High]   Pie chart on the right
 - [High]   Activity - input on the horizontal
-- [High]   Activity - table with the last 10-20 inputs
 - [Normal] Translate App to RO
 - [Normal] Encrypt passwords

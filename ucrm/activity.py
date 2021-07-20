@@ -12,8 +12,16 @@ def activity():
     db = get_db()
     error = None
 
-    activity_types = [row['name'] for row in db.execute('SELECT name FROM activity_type').fetchall()]
-    g.activity_types = activity_types
+    activity_types = db.execute('SELECT * FROM activity_type').fetchall()
+    g.activity_types = [row['name'] for row in activity_types]
+    activity_types = {row['id']: row['name'] for row in activity_types}
+
+    activities = db.execute('SELECT activityid, time, duration, details FROM activity WHERE userid = ? ORDER BY DATE(time) DESC LIMIT 20', (user_id,)).fetchall()
+    g.activities = [{
+        'name': activity_types[a['activityid']],
+        'time': a['time'],
+        'duration': a['duration'],
+        'details': a['details']} for a in activities]
 
     if request.method == 'POST':
         activity = request.form['activity']
