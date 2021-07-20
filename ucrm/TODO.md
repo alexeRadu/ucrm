@@ -1,2 +1,0 @@
-- dashboard to corectly use 'period' - use time correctly
-- create tests

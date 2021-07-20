@@ -1,8 +1,4 @@
 - [High]   change the way time is used in queries
-- [Normal] white background
-- [Normal] top bar color according to site
-- [Low]    move user name to the right, near the logout
-- [Low]    make font: Arial
 - [Normal] Pie chart in hours (not minutes)
 - [High]   Pie chart on the right
 - [High]   Activity - input on the horizontal
