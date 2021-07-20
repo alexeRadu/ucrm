@@ -1,3 +1,2 @@
 - [High]   Activity - input on the horizontal
-- [Normal] Translate App to RO
 - [Normal] Encrypt passwords
