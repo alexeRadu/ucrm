@@ -85,7 +85,8 @@ button:hover {
 
 .canvas-container {
 	display: flex;
-	justify-content: center;
+	justify-content: right;
+	width: 50%;
 }
 
 /* Content */

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="display:flex; flex-direction:row;">
 <form class="card" method = "post">
 	<div class="container">
 		<label for="user">User</label>
@@ -21,7 +22,6 @@
 		<button type="submit">Submit</button>
 	</div>
 </form>
-<hr>
 
 {% if g.stats %}
 <div class="canvas-container">
@@ -76,4 +76,5 @@ var myChart = new Chart(ctx, {
 });
 </script>
 {% endif %}
+</div>
 {% endblock %}
